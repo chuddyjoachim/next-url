@@ -1,4 +1,4 @@
-name: deploy nex-turl to vercel
+name: Vercel Action
 on: [push, pull_request]
 jobs:
   deploy:
