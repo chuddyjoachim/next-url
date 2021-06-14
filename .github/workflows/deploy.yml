@@ -1,29 +1,22 @@
-name: deploy website
+name: deploy nexturl to vercel
 on: [push, pull_request]
 jobs:
   vercel: 
     runs-on: ubuntu-latest
-    name: "Deploy front-end"
-    
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      #add env file to .env.local
+      - name: Set Env Vars on Vercel Project
+        uses: dkershner6/vercel-set-env-action@v1
         with:
-          node-version: '12'
-          registry-url: https://registry.npmjs.org/
-
-      - name: "Deploy to Vercel"
-        run: |
-          prodRun=""
-          if [[ ${GITHUB_REF} == "refs/heads/main" ]]; then
-            prodRun="--prod"
-          fi
-
-          npx vercel --token ${VERCEL_TOKEN} --prod
+          token: ${{ secrets.VERCEL_TOKEN }}
+          teamId: ${{ secrets.VERCEL_TEAM_ID }} # optional, without will use personal
+          projectName: nexturl # project name in Vercel
+          envVariableKeys: MONGODB_URL,MONGODB_DB
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
+          TARGET_MONGODB_URL: preview,development,production # comma delimited, one of [production, preview, development]
+          TYPE_MONGODB_URL: encrypted # one of [plain, encrypted]
           MONGODB_DB: ${{ secrets.MONGODB_DB }}
-      
+          TARGET_MONGODB_DB: preview,development,production
+          TYPE_MONGODB_DB: encrypted
