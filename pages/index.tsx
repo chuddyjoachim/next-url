@@ -47,7 +47,7 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Next-url</title>
         <meta name="description" content="Nexturl --link shortener" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
