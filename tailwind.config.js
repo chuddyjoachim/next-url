@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        headline: ['Righteous-Regular']
+        headline: ['"Righteous"', 'cursive']
       }
     },
   },
