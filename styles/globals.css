@@ -5,9 +5,7 @@
 @layer base {
   @font-face {
     font-family: 'Righteous-Regular';
-    src: url(../assets/fonts/righteous/Righteous-Regular.eot);
-    src: url(../assets/fonts/righteous/Righteous-Regular.eot?#iefix) format('embedded-opentype'),
-        url(../assets/fonts/righteous/Righteous-Regular.otf) format('otf'),
+    src:url(../assets/fonts/righteous/Righteous-Regular.otf) format('otf'),
         url(../assets/fonts/righteous/Righteous-Regular.svg#Righteous-Regular) format('svg'),
         url(../assets/fonts/righteous/Righteous-Regular.ttf) format('truetype'),
         url(../assets/fonts/righteous/Righteous-Regular.woff) format('woff'),
