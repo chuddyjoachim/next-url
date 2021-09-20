@@ -52,16 +52,16 @@ const Home: React.FC<HomeProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className="text-lg text-black font-semibold flex items-center justify-center bg-gray-100 rounded-lg py-1 my-2">
+      <main className="w-full flex flex-col justify-center items-center">
+        <h1 className="text-2xl font-headline tracking-wider text-gray-600 font-semibold flex items-center justify-center rounded-lg py-2 px-3 mb-2 my-2">
           NextUrl Shortner
         </h1>
 
         <form action="" onSubmit={linkSubmit}>
-          <div className="inputField">
+          <div className="inputField mt-2">
             <input
               type="text"
-              className="linkInput rounded-md border border-gray-300 py-1 px-1 mx-2"
+              className="linkInput rounded-md border border-gray-300 py-1.5 px-1 mx-2"
               placeholder="https://my-link.com/name=?id-linker/lorem-lipsum/lorem-lipsum"
               value={urlState}
               onChange={(e) => {
@@ -71,7 +71,7 @@ const Home: React.FC<HomeProps> = () => {
             <button
               type="submit"
               className={
-                "rounded-md bg-green-500 font-semibold text-white py-1 px-1 border-gray-300"
+                "rounded-md bg-green-500 font-semibold text-white py-1.5 px-2 border-gray-300"
               }
             >
               Shorten

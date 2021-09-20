@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<shortid>) => {
       req.body.link !== ""
     ) {
       let body = JSON.parse(req.body).link;
-      const id_ = nanoid();
+      const id_ = nanoid(5);
 
       const entry = await db
         .collection("url")
