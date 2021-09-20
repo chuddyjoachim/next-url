@@ -1,13 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  @font-face {
-    font-family: 'Righteous-Regular';
-    src:url(../assets/fonts/righteous/Righteous-Regular.ttf) format('truetype');
-  }
-}
 
 
 html,
