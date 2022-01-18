@@ -21,3 +21,6 @@ To build this project, you require:
 ## Screenshots
 
 ![nexturl Screenshot](https://github.com/chuddyjoachim/next-url/blob/main/assets/screenshots/NEXT-URL-SCREENSHOT.png?raw=true)
+
+### Modal to copy link
+![nexturl Screenshot](https://github.com/chuddyjoachim/next-url/blob/main/assets/screenshots/NEXT-URL-SCREENSHOT2.png?raw=true)
