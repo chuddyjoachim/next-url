@@ -1,6 +1,4 @@
-/// <reference types="cypress"/>
-
-context("Home page", () => {
+describe("Home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
   });
@@ -11,7 +9,7 @@ context("Home page", () => {
   });
 
   //   it Enters text in the search input and submit the form
-  it.only("Enters text in the search input and submits the form", () => {
+  it("Enters text in the search input and submits the form", () => {
     cy.get(".linkInput")
     .type("https://google.com")
     .type('{enter}')
