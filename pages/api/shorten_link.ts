@@ -2,31 +2,38 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connectDb } from "../../util/mongodbConfig";
 import { nanoid } from "nanoid";
-
 type shortid = {};
 
 export default async (req: NextApiRequest, res: NextApiResponse<shortid>) => {
+  await connectDb();
   if (req.method === "POST") {
-    const { db } = await connectDb();
+    try {
+      const { db } = await connectDb();
+      if (
+        req.body !== "" &&
+        req.body.link !== undefined &&
+        req.body.link !== ""
+      ) {
+        let body = JSON.parse(req.body).link;
+        const id_ = nanoid(5);
 
-    if (
-      req.body !== "" &&
-      req.body.link !== undefined &&
-      req.body.link !== ""
-    ) {
-      let body = JSON.parse(req.body).link;
-      const id_ = nanoid(5);
+        let reponse = await db.collection("url").findOne({ url: body });
 
-      const entry = await db
-        .collection("url")
-        .insertOne({ shortid: id_, url: body });
-      const reponse = await db.collection("url").findOne({ url: body });
+        if (!reponse) {
+          const entry = db
+            .collection("url")
+            .insertOne({ shortid: id_, url: body });
+          reponse = await db.collection("url").findOne({ url: body });
+        }
 
-      res.statusCode = 201;
-      return res.json({ shortid: reponse.shortid });
+        if (reponse) {
+          res.statusCode = 201;
+          res.json({ shortid: reponse.shortid });
+        }
+      }
+    } catch (error) {
+      res.statusCode = 409;
+      res.json({ error: "no_link_found", error_description: "No link found" });
     }
-
-    res.statusCode = 409;
-    res.json({ error: "no_link_found", error_description: "No link found" });
   }
 };
