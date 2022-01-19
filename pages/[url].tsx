@@ -38,6 +38,8 @@ const post = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { url } = context.query;
+  
+  await connectDb()
 
   let data;
   try {
