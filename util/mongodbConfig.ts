@@ -26,7 +26,7 @@ if (!cached) {
 
 export const connectDb = async () => {
   if (cached.conn) {
-    return cached.conn;
+    return await cached.conn;
   }
 
   if (!cached.promise) {
@@ -34,7 +34,7 @@ export const connectDb = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     };
-    cached.promise = MongoClient.connect(MONGODB_URL, options).then(
+    cached.promise = await MongoClient.connect(MONGODB_URL, options).then(
       (client) => {
         return {
           client,
@@ -44,5 +44,5 @@ export const connectDb = async () => {
     );
   }
   cached.conn = await cached.promise;
-  return cached;
+  return await cached;
 };
